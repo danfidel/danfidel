@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+def random_boolean
+  [false, true][rand(2)]
+end
+
+%w(huey louie dewey).each do |username|
+  User.create!(:username              => username,
+               :password              => "password",
+               :password_confirmation => "password",
+               :producer              => random_boolean,
+               :director              => random_boolean,
+               :actor                 => random_boolean)
+end
