@@ -2,7 +2,7 @@ namespace :user do
   desc "List the username and security roles of all users or a single user (e.g. 'rake user:list' or 'rake user:list[dewey]')"
   task :list, [:username] => :environment do |t, args|
     username = args[:username].to_s.strip
-    if username
+    if username.present?
       display_user(User.find_by_username(username))
     else
       User.order(:username).each { |user| display_user(user) }
