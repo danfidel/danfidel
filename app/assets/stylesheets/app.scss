@@ -42,7 +42,6 @@ fieldset {
 table {
     margin-top: 2.5em;
     border-collapse:collapse;
-    background-color: #ececec;
 }
 
 table,th, td {
@@ -60,6 +59,7 @@ td, th {
 th {
     text-align: center;
     font-size: 110%;
+    background-color: #ececec;
 }
 
 .actions {
