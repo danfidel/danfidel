@@ -95,4 +95,46 @@ describe UsersController do
     end
   end
 
+  describe "GET test_password" do
+    it "assigns the requested user as @user" do
+      user = User.create! valid_attributes
+      get :test_password, {:user_id => user.to_param}, valid_session
+      assigns(:user).should eq(user)
+    end
+  end
+
+  describe "GET authenticate" do
+    describe "with valid password" do
+      it "assigns the requested user as @user" do
+        user = User.create! valid_attributes
+        get :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
+        assigns(:user).should eq(user)
+      end
+
+      it "redirects to the user index" do
+        user = User.create! valid_attributes
+        get :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
+        response.should redirect_to('#index')
+      end
+    end
+
+    describe "with invalid password" do
+      it "assigns the user as @user" do
+        user = User.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        User.any_instance.stub(:authenticate).and_return(false)
+        get :authenticate, {:user_id => user.to_param, :user => {}}, valid_session
+        assigns(:user).should eq(user)
+      end
+
+      it "re-renders the 'test_password' template" do
+        user = User.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        User.any_instance.stub(:authenticate).and_return(false)
+        get :authenticate, {:user_id => user.to_param, :user => {}}, valid_session
+        response.should render_template("test_password")
+      end
+    end
+  end
+
 end

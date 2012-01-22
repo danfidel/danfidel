@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  respond_to :html
+  
   # GET /users
   # GET /users.json
   def index
@@ -26,6 +28,27 @@ class UsersController < ApplicationController
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
+        format.json { render :json => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def test_password
+    @user = User.find(params[:user_id])
+    respond_with(@user)
+  end
+
+  def authenticate
+    @user = User.find(params[:user_id])
+    password = (params[:user] || {})[:password]
+
+    respond_to do |format|
+      if @user.authenticate(password)
+        format.html { redirect_to '#index', :notice => 'Password is authentic.' }
+        format.json { head :ok }
+      else
+        @user.errors.add :base, "Password is invalid"
+        format.html { render :action => "test_password" }
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
     end
