@@ -2,6 +2,10 @@
 
 This small Rails 3.1 project is a candidate implementation of a specification from a job interview.
 
-The source code for this project is available at http://github.com/danfidel/danfidel.
+The source code for this project is available at:
 
-A live staging server running this project is available at http://interview-test-app.herokuapp.com.
+http://github.com/danfidel/danfidel
+
+A live staging server running this project is available at:
+
+http://interview-test-app.herokuapp.com
