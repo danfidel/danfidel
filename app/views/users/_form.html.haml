@@ -7,8 +7,11 @@
           %li= msg
 
   .field
-    = f.label :password_digest
-    = f.text_field :password_digest
+    = f.label :password
+    = f.text_field :password
+  .field
+    = f.label :password_confirmation
+    = f.text_field :password_confirmation
   .field
     = f.label :producer
     = f.check_box :producer
