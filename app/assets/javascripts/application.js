@@ -7,3 +7,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// This method is part of the "float-left, align-right" label positioning technique.
+function adjustFormLabelWidths() {
+  $("form").each(function(){
+    var max = 0;
+    $(this).find("div.field label").each(function(){
+      if ($(this).width() > max)
+        max = $(this).width();
+    });
+    $(this).find("div.field label").each(function(){
+      $(this).width(max);
+      $(this).css('float', 'left');
+      $(this).css('text-align', 'right');
+      $(this).css('padding-right', '1em');
+    });
+  });
+}
+
+
+$(document).ready(function() {
+  adjustFormLabelWidths();
+});
