@@ -12,8 +12,8 @@
   - @users.each do |user|
     %tr
       %td= user.username
-      %td= user.producer
-      %td= user.director
-      %td= user.actor
+      %td.boolean= table_boolean user.producer
+      %td.boolean= table_boolean user.director
+      %td.boolean= table_boolean user.actor
       %td= link_to 'Edit', edit_user_path(user)
       %td= link_to 'Test Password', user_test_password_path(user)
