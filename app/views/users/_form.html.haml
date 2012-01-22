@@ -6,15 +6,17 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :producer
-    = f.check_box :producer
-  .field
-    = f.label :director
-    = f.check_box :director
-  .field
-    = f.label :actor
-    = f.check_box :actor
+  %fieldset
+    %legend Security Roles
+    .field
+      = f.label :producer
+      = f.check_box :producer
+    .field
+      = f.label :director
+      = f.check_box :director
+    .field
+      = f.label :actor
+      = f.check_box :actor
 
   %fieldset(style="width: 30em;")
     %legend Change Password
