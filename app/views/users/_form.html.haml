@@ -20,7 +20,8 @@
 
   %fieldset
     %legend Change Password
-    %em Leave empty to keep the current password
+    %p
+      %em (leave empty to keep the current password)
     .field
       = f.label :password, "New password"
       = f.password_field :password
