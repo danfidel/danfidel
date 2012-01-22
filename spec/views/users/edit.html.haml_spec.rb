@@ -16,7 +16,6 @@ describe "users/edit" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => users_path(@user), :method => "post" do
-      assert_select "input#user_username", :name => "user[username]"
       assert_select "input#user_password_digest", :name => "user[password_digest]"
       assert_select "input#user_producer", :name => "user[producer]"
       assert_select "input#user_director", :name => "user[director]"
