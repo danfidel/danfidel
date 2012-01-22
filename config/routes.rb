@@ -1,4 +1,6 @@
 InterviewTestApp::Application.routes.draw do
+  root :to => redirect('/users')
+
   resources :users
 
   # The priority is based upon order of creation:
