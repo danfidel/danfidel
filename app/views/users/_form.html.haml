@@ -7,12 +7,6 @@
           %li= msg
 
   .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :password_confirmation
-    = f.text_field :password_confirmation
-  .field
     = f.label :producer
     = f.check_box :producer
   .field
@@ -21,6 +15,17 @@
   .field
     = f.label :actor
     = f.check_box :actor
+
+  %fieldset(style="width: 30em;")
+    %legend Change Password
+    %em Leave empty to keep the current password
+    .field
+      = f.label :password, "New password"
+      = f.password_field :password
+    .field
+      = f.label :password_confirmation, "Confirm password"
+      = f.password_field :password_confirmation
+
   .actions
     = f.submit 'Save'
     = link_to 'Cancel', users_path
