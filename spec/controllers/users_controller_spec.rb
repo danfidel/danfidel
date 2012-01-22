@@ -89,6 +89,7 @@ describe UsersController do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
+        User.any_instance.stub(:errors).and_return(ActiveModel::Errors.new(nil).tap { |errors| errors.add(:base, "error") })
         put :update, {:id => user.to_param, :user => {}}, valid_session
         response.should render_template("edit")
       end
