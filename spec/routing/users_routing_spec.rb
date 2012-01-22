@@ -20,7 +20,7 @@ describe UsersController do
     end
 
     it "routes to #authenticate" do
-      get("/users/1/authenticate").should route_to("users#authenticate", :user_id => "1")
+      put("/users/1/authenticate").should route_to("users#authenticate", :user_id => "1")
     end
 
   end

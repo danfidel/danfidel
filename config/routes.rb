@@ -4,6 +4,6 @@ InterviewTestApp::Application.routes.draw do
 
   resources :users do
     get :test_password
-    get :authenticate
+    put :authenticate     # The HTTP verb is 'put' so that the password being tested is not visible in the URL's query params
   end
 end

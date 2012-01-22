@@ -104,17 +104,17 @@ describe UsersController do
     end
   end
 
-  describe "GET authenticate" do
+  describe "PUT authenticate" do
     describe "with valid password" do
       it "assigns the requested user as @user" do
         user = User.create! valid_attributes
-        get :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
+        put :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
         assigns(:user).should eq(user)
       end
 
       it "redirects to the user index" do
         user = User.create! valid_attributes
-        get :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
+        put :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
         response.should redirect_to(users_url)
       end
     end
@@ -124,7 +124,7 @@ describe UsersController do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:authenticate).and_return(false)
-        get :authenticate, {:user_id => user.to_param, :user => {}}, valid_session
+        put :authenticate, {:user_id => user.to_param, :user => {}}, valid_session
         assigns(:user).should eq(user)
       end
 
@@ -132,7 +132,7 @@ describe UsersController do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:authenticate).and_return(false)
-        get :authenticate, {:user_id => user.to_param, :user => {}}, valid_session
+        put :authenticate, {:user_id => user.to_param, :user => {}}, valid_session
         response.should render_template("test_password")
       end
     end
