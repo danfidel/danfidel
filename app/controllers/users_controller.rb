@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       flash[:notice] = 'User was successfully updated.'
     end
-    respond_with(@user, :location => '#index')
+    respond_with(@user, :location => users_url)
   end
 
   def test_password
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.authenticate(password)
-        format.html { redirect_to '#index', :notice => 'Password is authentic.' }
+        format.html { redirect_to users_url, :notice => 'Password is authentic.' }
       else
         @user.errors.add :base, "Password is invalid"
         format.html { render :action => "test_password" }

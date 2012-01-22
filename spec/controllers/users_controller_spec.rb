@@ -72,7 +72,7 @@ describe UsersController do
       it "redirects to the user index" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        response.should redirect_to('#index')
+        response.should redirect_to(users_url)
       end
     end
 
@@ -115,7 +115,7 @@ describe UsersController do
       it "redirects to the user index" do
         user = User.create! valid_attributes
         get :authenticate, {:user_id => user.to_param, :user => valid_attributes}, valid_session
-        response.should redirect_to('#index')
+        response.should redirect_to(users_url)
       end
     end
 
