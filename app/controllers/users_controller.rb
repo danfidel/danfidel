@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   respond_to :html
   
   def index
-    @users = User.all
+    @users = User.scoped
     respond_with(@users)
   end
 
