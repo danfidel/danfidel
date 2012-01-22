@@ -69,10 +69,10 @@ describe UsersController do
         assigns(:user).should eq(user)
       end
 
-      it "redirects to the user" do
+      it "redirects to the user index" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        response.should redirect_to(user)
+        response.should redirect_to('#index')
       end
     end
 
